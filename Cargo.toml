@@ -1,0 +1,30 @@
+[package]
+name = "wifi-server"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = """A server that tells wifi passwords and other details"""
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = {version = "0.7.4", features = ["http2", "ws", "macros"]}
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.114"
+tokio = {version = "1.36.0", features = ["full"]}
+toml = "0.8.12"
+
+[package.metadata.deb]
+maintainer = "Paschal Obba <paschalobba@gmail.com>"
+copyright = "2024, Paschal Obba"
+extended-description = """A server that tells wifi passwords and other details"""
+section = "utility"
+priority = "optional"
+assets = [
+    ["target/aarch64-unknown-linux-gnu/release/wifi-server", "/usr/bin/", "755"],
+    ["config.toml", "/usr/bin/", "755"]
+]
+
+[profile.release]
+debug = 1 
+strip = true
