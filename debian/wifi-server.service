@@ -1,0 +1,11 @@
+[Unit]
+Description=WI-FI server
+
+[Service]
+ExecStart=/usr/bin/wifi-server
+Restart=always
+RestartSec=1
+Environment="RUST_LOG=tower_http=trace"
+
+[Install]
+WantedBy=multi-user.target
