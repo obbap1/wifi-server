@@ -33,15 +33,9 @@ async fn main() {
         "/usr/bin/config.toml"
     };
 
-    let content = match fs::read_to_string(file_path) {
-        Ok(f) => f,
-        Err(_) => EMPTY.to_string()
-    };
+    let content = fs::read_to_string(file_path).unwrap_or_else(|_| EMPTY.to_string());
 
-    let data: Config = match toml::from_str(&content) {
-        Ok(d) => d,
-        Err(_) => Config::default()
-    };
+    let data: Config = toml::from_str(&content).unwrap_or_else(|_| Config::default());
 
     let app = Router::new()
         .route("/", get(res))

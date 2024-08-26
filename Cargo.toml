@@ -11,7 +11,7 @@ description = """A server that tells wifi passwords and other details"""
 axum = {version = "0.7.4", features = ["http2", "ws", "macros"]}
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.114"
-tokio = {version = "1.36.0", features = ["full"]}
+tokio = { version = "1.36.0", features = ["full"] }
 toml = "0.8.12"
 tower-http = { version = "0.5.2", features = ["trace"] }
 tracing = "0.1.40"
